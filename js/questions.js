@@ -1,26 +1,9 @@
-// ============================================================
-// questions.js — the actual MIL quiz question bank.
-//
-// Plain script (no ES modules), wrapped in an IIFE so internals
-// stay private. Attaches window.MIL.QUESTIONS: an object keyed by
-// category id (matching CATEGORIES in cards.js), each holding an
-// array of { question, options[4], correctIndex, explanation }.
-//
-// Sourced from ENGLISH_-_MIL_QUESTION_FIX1.docx. The document's
-// five themes map onto the wheel's four colour categories as:
-//   Theme 1 "AI Language and AI Hallucinations"        -> ai-lang
-//   Theme 2 "Misinformation"                            -> mi
-//   Theme 3 "Deepfake and Digital Hoax"                 -> deepfake (part 1)
-//   Theme 4 "Deepfake and Detection Visualization of AI"-> deepfake (part 2)
-//   Theme 5 "Ice Breaking"                               -> icbr
-// ============================================================
+
 window.MIL = window.MIL || {};
 
 (function () {
   const QUESTIONS = {
-    // ---------------------------------------------------------
-    // GREEN — AI Language and AI Hallucinations (Theme 1)
-    // ---------------------------------------------------------
+
     'ai-lang': [
       {
         question: 'Why can AI Chatbots (like ChatGPT or Gemini) provide false information but convey it in a very confident and convincing language?',
@@ -74,9 +57,7 @@ window.MIL = window.MIL || {};
       },
     ],
 
-    // ---------------------------------------------------------
-    // BLUE — Misinformation (Theme 2)
-    // ---------------------------------------------------------
+
     'mi': [
       {
         question: 'What is the main difference between Misinformation and Disinformation?',
@@ -120,12 +101,9 @@ window.MIL = window.MIL || {};
       },
     ],
 
-    // ---------------------------------------------------------
-    // ORANGE — Deepfake (Theme 3 "Digital Hoax" + Theme 4
-    // "Detection Visualization" combined into one wheel colour)
-    // ---------------------------------------------------------
+
     'deepfake': [
-      // --- Theme 3: Deepfake and Digital Hoax ---
+
       {
         question: 'AI technology that is able to imitate the pitch, intonation, and timbre of a person\u2019s voice from just a short audio recording sample is called...',
         options: ['Voice typing', 'Video cloning', 'Photo editing', 'Screen recording'],
@@ -171,7 +149,7 @@ window.MIL = window.MIL || {};
         correctIndex: 2,
         explanation: 'Hang up and call the person back on the number you already have saved for them — this sidesteps voice cloning entirely, since you\u2019re reaching the real person through a channel the scammer doesn\u2019t control.',
       },
-      // --- Theme 4: Deepfake and Detection Visualization of AI ---
+
       {
         question: 'Suddenly, a voice message appears on your phone that sounds exactly like your best friend, even though it was created by an AI computer! This voice-mimicking technology is called...',
         options: ['Voice Cloning', 'Voice Drawing', 'Voice Typing', 'Voice Recording'],
@@ -208,9 +186,7 @@ window.MIL = window.MIL || {};
       },
     ],
 
-    // ---------------------------------------------------------
-    // RED — Ice Breaking (Theme 5)
-    // ---------------------------------------------------------
+
     'icbr': [
       {
         question: 'What does the term AI stand for?',
