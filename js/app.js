@@ -1,14 +1,6 @@
-// ============================================================
-// app.js — screen navigation + game state machine
-//
-// Plain script (no ES modules) so the game also runs when
-// index.html is opened directly by double-click. Loaded last,
-// after cards.js / wheel.js / playerChance.js have populated
-// the shared window.MIL namespace.
-// ============================================================
+
 const { drawCard, SpinWheel, PlayerChance } = window.MIL;
 
-// ---------- element refs ----------
 const screens = new Map(
   Array.from(document.querySelectorAll('.screen')).map((el) => [el.dataset.screen, el])
 );
@@ -47,12 +39,11 @@ const btnNextTurn = document.getElementById('btnNextTurn');
 const GAMEPLAY_SCREENS = new Set(['playerChance', 'wheel', 'card']);
 const NO_HOME_SCREENS = new Set(['splash', 'menu']);
 
-// ---------- state ----------
 const state = {
-  mode: null, // 'single' | 'multi'
+  mode: null, 
   playerCount: 4,
   round: 1,
-  currentTurn: null, // { name, hex, dark } from PlayerChance, multiplayer only
+  currentTurn: null,
 };
 
 const wheel = new SpinWheel(wheelEl);
@@ -63,7 +54,6 @@ const playerChance = new PlayerChance({
   retryBtn: chanceRetry,
 });
 
-// ---------- screen manager ----------
 function showScreen(name) {
   screens.forEach((el, key) => {
     el.classList.toggle('active', key === name);
@@ -77,7 +67,6 @@ function showScreen(name) {
   if (active) active.scrollTop = 0;
 }
 
-// ---------- navigation wiring ----------
 splashTapTarget.addEventListener('click', () => showScreen('menu'));
 
 btnPlay.addEventListener('click', () => {
@@ -106,7 +95,6 @@ homeBtn.addEventListener('click', () => {
   showScreen('menu');
 });
 
-// ---------- player chance ----------
 function startPlayerChance() {
   showScreen('playerChance');
   chanceLabel.textContent = 'Tap together!';
@@ -128,7 +116,6 @@ function updateTurnBadge() {
   }
 }
 
-// ---------- spin wheel ----------
 btnSpin.addEventListener('click', async () => {
   btnSpin.disabled = true;
   wheelResult.textContent = 'Spinning…';
@@ -140,22 +127,9 @@ btnSpin.addEventListener('click', async () => {
   }, 900);
 });
 
-// ---------- card reveal (INTERACTIVE QUIZ) ----------
-// ===== INTERACTIVE QUIZ ADDITION =====
-// Small unicode glyphs used on the feedback icon instead of an SVG
-// sprite — keeps this addition to plain markup/text, no new assets.
-const ICON_CORRECT = '\u2713'; // ✓
-const ICON_INCORRECT = '\u2715'; // ✕
+const ICON_CORRECT = '\u2713'; 
+const ICON_INCORRECT = '\u2715'; 
 
-/**
- * Renders a fresh question into the quiz card and wires up the
- * click-to-answer interaction:
- *  - clicking an option instantly marks it correct (green) or
- *    incorrect (red), and always reveals the correct option too
- *  - all four options are disabled immediately after the first click
- *    so the answer can't be changed
- *  - the explanation text fades in right after answering
- */
 function showCard(categoryId) {
   const card = drawCard(categoryId);
 
@@ -163,8 +137,6 @@ function showCard(categoryId) {
   categoryPill.style.background = card.category.hex;
   categoryPill.style.boxShadow = `0 4px 0 ${card.category.hexDark}`;
 
-  // Tint the card's question text + answer panel to match the
-  // category colour (read by css/style.css via var(--cat-color)).
   quizCard.style.setProperty('--cat-color', card.category.hex);
 
   quizQuestion.textContent = card.question;
@@ -172,7 +144,6 @@ function showCard(categoryId) {
   quizExplanation.hidden = true;
   quizExplanation.textContent = card.explanation;
 
-  // Rebuild the four answer buttons from scratch for this question.
   quizAnswers.innerHTML = '';
   quizAnswers.dataset.locked = 'false';
   const letters = ['A', 'B', 'C', 'D'];
@@ -189,21 +160,21 @@ function showCard(categoryId) {
     btn.querySelector('.quiz-option-text').textContent = optionText;
 
     btn.addEventListener('click', () => {
-      // Ignore further clicks once this question has been answered.
+      
       if (quizAnswers.dataset.locked === 'true') return;
       quizAnswers.dataset.locked = 'true';
 
       const allButtons = Array.from(quizAnswers.querySelectorAll('.quiz-option'));
 
       allButtons.forEach((otherBtn, otherIndex) => {
-        otherBtn.disabled = true; // lock every option immediately
+        otherBtn.disabled = true; 
 
         if (otherIndex === card.correctIndex) {
-          // Always reveal the correct answer, whether or not it was picked.
+
           otherBtn.classList.add('is-correct');
           otherBtn.querySelector('.quiz-option-icon').textContent = ICON_CORRECT;
         } else if (otherIndex === index) {
-          // The (wrong) option the player actually clicked.
+
           otherBtn.classList.add('is-incorrect');
           otherBtn.querySelector('.quiz-option-icon').textContent = ICON_INCORRECT;
         } else {
@@ -230,5 +201,4 @@ btnNextTurn.addEventListener('click', () => {
   }
 });
 
-// ---------- initial screen ----------
 showScreen('splash');
