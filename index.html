@@ -20,10 +20,10 @@
 <div class="stage">
   <div class="phone-frame" id="phoneFrame">
 
-    <!-- Persistent round pill (shown during gameplay) -->
+
     <div class="round-pill" id="roundPill" hidden><span id="roundPillText">Round 1</span></div>
 
-    <!-- Persistent home button (shown on every screen except splash & menu) -->
+
     <button class="home-btn" id="homeBtn" type="button" aria-label="Back to main menu" hidden>
       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9a1 1 0 0 0 1 1H9a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h2.5a1 1 0 0 0 1-1v-9"/></svg>
     </button>
@@ -52,7 +52,6 @@
       </button>
     </section>
 
-    <!-- ============ MAIN MENU ============ -->
     <section class="screen" data-screen="menu" aria-label="Main menu">
       <div class="screen-inner">
         <div class="logo-grid">
@@ -71,7 +70,6 @@
       </div>
     </section>
 
-    <!-- ============ PLAYER COUNT SELECT ============ -->
     <section class="screen" data-screen="playerCount" aria-label="Choose number of players">
       <div class="screen-inner">
         <div class="logo-grid logo-grid-sm">
@@ -89,7 +87,6 @@
       </div>
     </section>
 
-    <!-- ============ PLAYER CHANCE (choose who goes) ============ -->
     <section class="screen" data-screen="playerChance" aria-label="Choose the next player">
       <div class="screen-inner">
         <div class="chance-label" id="chanceLabel">Tap together!</div>
@@ -103,7 +100,6 @@
       </div>
     </section>
 
-    <!-- ============ SPIN WHEEL ============ -->
     <section class="screen" data-screen="wheel" aria-label="Spin the wheel">
       <div class="screen-inner">
         <div class="turn-badge" id="turnBadge" hidden></div>
@@ -121,7 +117,6 @@
       </div>
     </section>
 
-    <!-- ============ QUESTION CARD (interactive quiz) ============ -->
     <section class="screen" data-screen="card" aria-label="Question card">
       <div class="screen-inner screen-inner-card">
         <div class="category-pill" id="categoryPill"></div>
@@ -140,7 +135,6 @@
       </div>
     </section>
 
-    <!-- ============ TUTORIAL ============ -->
     <section class="screen" data-screen="tutorial" aria-label="Tutorial">
       <div class="screen-inner screen-inner-scroll">
         <div class="logo-grid logo-grid-sm">
