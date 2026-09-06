@@ -1,7 +1,4 @@
-/* =========================================================
-   AI Detective Treasure — Design tokens
-   Palette + type extracted from the source UI/UX designs.
-   ========================================================= */
+
 :root{
   --blue:        #5CD1DE;
   --blue-dark:   #2FA6B4;
@@ -51,9 +48,6 @@ img{ max-width: 100%; display: block; }
   }
 }
 
-/* =========================================================
-   Stage & phone frame
-   ========================================================= */
 .stage{
   min-height: 100dvh;
   display: flex;
@@ -100,9 +94,6 @@ img{ max-width: 100%; display: block; }
   .phone-frame::before, .phone-frame::after{ display:none; }
 }
 
-/* =========================================================
-   Screens
-   ========================================================= */
 .screen{
   position: absolute;
   inset: 0;
@@ -155,9 +146,6 @@ img{ max-width: 100%; display: block; }
   letter-spacing: 1px;
 }
 
-/* =========================================================
-   Logo lockup (AI / DETECTIVE / TREA / SURE)
-   ========================================================= */
 .logo-grid{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -187,9 +175,6 @@ img{ max-width: 100%; display: block; }
 .tile-orange{ background: var(--orange); }
 .tile-green{ background: var(--green); }
 
-/* =========================================================
-   Buttons
-   ========================================================= */
 .btn{
   --shade: var(--blue-dark);
   appearance: none;
@@ -234,9 +219,6 @@ img{ max-width: 100%; display: block; }
   width: min(320px, 100%);
 }
 
-/* =========================================================
-   Home button + round pill (persistent chrome)
-   ========================================================= */
 .home-btn[hidden],
 .round-pill[hidden]{ display: none; }
 .home-btn{
@@ -273,9 +255,6 @@ img{ max-width: 100%; display: block; }
   box-shadow: 0 3px 0 var(--blue-dark);
 }
 
-/* =========================================================
-   Splash screen
-   ========================================================= */
 .splash-tap-target{
   appearance: none;
   border: none;
@@ -337,14 +316,9 @@ img{ max-width: 100%; display: block; }
   50%{ opacity: 1; }
 }
 
-/* =========================================================
-   Player count screen
-   ========================================================= */
 [data-screen="playerCount"] .screen-title{ margin-top: -4px; }
 
-/* =========================================================
-   Player Chance screen
-   ========================================================= */
+
 .chance-label{
   background: var(--blue);
   color: #fff;
@@ -432,9 +406,6 @@ img{ max-width: 100%; display: block; }
   100%{ opacity: 0; transform: scale(1.9); }
 }
 
-/* =========================================================
-   Spin wheel screen
-   ========================================================= */
 .turn-badge{
   font-family: var(--font-display);
   font-weight: 600;
@@ -512,9 +483,6 @@ img{ max-width: 100%; display: block; }
   color: var(--ink);
 }
 
-/* =========================================================
-   Card reveal screen
-   ========================================================= */
 .category-pill{
   font-family: var(--font-display);
   font-weight: 700;
@@ -535,11 +503,6 @@ img{ max-width: 100%; display: block; }
   padding: 6px 0;
 }
 
-/* =========================================================
-   Interactive quiz card (replaces the old flattened <img>)
-   Two-tone layout matches the original card art: white question
-   band on top, solid category-colour answer band underneath.
-   ========================================================= */
 .quiz-card{
   width: 100%;
   max-width: 340px;
@@ -599,10 +562,7 @@ img{ max-width: 100%; display: block; }
 .quiz-option-text{ flex: 1; }
 .quiz-option-icon{ flex-shrink: 0; width: 18px; text-align: center; font-size: 0.95rem; line-height: 1; }
 
-/* ===== INTERACTIVE QUIZ: feedback states =====
-   White fill + coloured border/text works on top of ANY of the
-   four category colours (red/orange/blue/green) without the
-   feedback colour blending into a same-hue category panel. */
+
 .quiz-option.is-correct{
   background: #fff;
   border-color: var(--green);
@@ -633,9 +593,6 @@ img{ max-width: 100%; display: block; }
   to{ opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* =========================================================
-   Tutorial / Policy info cards
-   ========================================================= */
 .info-card{
   width: 100%;
   background: #fff;
@@ -681,7 +638,6 @@ img{ max-width: 100%; display: block; }
 .rule-list li.rule-blue strong{ color: var(--blue-dark); }
 .rule-list li.rule-green strong{ color: var(--green); }
 
-/* Small screens: tighten paddings */
 @media (max-height: 700px){
   .screen-inner{ gap: 14px; padding: 22px 22px 26px; }
   .logo-grid{ width: min(220px, 56%); }
