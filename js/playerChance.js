@@ -1,13 +1,4 @@
-// ============================================================
-// playerChance.js — "everyone tap together" multi-touch chooser.
-// Uses the Pointer Events API so genuine simultaneous touches on
-// a shared tablet/phone are each tracked independently. Each touch
-// is randomly assigned one of the four brand colours; once enough
-// players have touched down, one is chosen at random as "up next".
-//
-// Plain script (no ES modules). Wrapped in an IIFE so internals
-// stay private; only PlayerChance is attached to window.MIL.
-// ============================================================
+
 window.MIL = window.MIL || {};
 
 (function () {
@@ -28,13 +19,6 @@ window.MIL = window.MIL || {};
   }
 
   class PlayerChance {
-    /**
-     * @param {Object} els
-     * @param {HTMLElement} els.pad
-     * @param {HTMLElement} els.hint
-     * @param {HTMLElement} els.status
-     * @param {HTMLElement} els.retryBtn
-     */
     constructor({ pad, hint, status, retryBtn }) {
       this.pad = pad;
       this.hint = hint;
@@ -52,11 +36,7 @@ window.MIL = window.MIL || {};
       this.retryBtn.addEventListener('click', () => this._restart());
     }
 
-    /**
-     * Starts a new round requiring `n` simultaneous players.
-     * @param {number} n
-     * @returns {Promise<{name:string, hex:string, dark:string}>}
-     */
+
     start(n) {
       this.required = n;
       this._reset(false);
@@ -90,8 +70,7 @@ window.MIL = window.MIL || {};
       if (this.resolved) return;
       if (this.tokens.size >= this.required) return;
 
-      // Mouse always reports the same pointerId; treat each mouse click as a
-      // distinct "player" so the game is still testable with one pointer.
+
       const id = evt.pointerType === 'mouse' ? `mouse-${Date.now()}-${Math.random()}` : evt.pointerId;
       if (this.tokens.has(id)) return;
 
